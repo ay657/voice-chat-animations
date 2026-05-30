@@ -1,13 +1,16 @@
 import express from 'express';
-import { getAllFrames, getFrameById, getFormats } from '../controllers/animationController.js';
+import { getAllFrames, getFrameById, getFramesByCategory, getFormats } from '../controllers/animationController.js';
 
 const router = express.Router();
 
 // Get all animation frames
-router.get('/frames', getAllFrames);
+router.get('/', getAllFrames);
 
 // Get specific frame by ID
-router.get('/frames/:id', getFrameById);
+router.get('/:id', getFrameById);
+
+// Get frames by category
+router.get('/category/:category', getFramesByCategory);
 
 // Get supported formats
 router.get('/formats', getFormats);

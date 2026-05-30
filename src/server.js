@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import animationRoutes from './routes/animations.js';
 import giftRoutes from './routes/gifts.js';
 import effectRoutes from './routes/effects.js';
+import gameRoutes from './routes/games.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.static('assets'));
 app.use('/api/animations', animationRoutes);
 app.use('/api/gifts', giftRoutes);
 app.use('/api/effects', effectRoutes);
+app.use('/api/games', gameRoutes);
 
 // Health Check
 app.get('/health', (req, res) => {
@@ -29,14 +31,25 @@ app.get('/health', (req, res) => {
 // Root endpoint
 app.get('/', (req, res) => {
   res.json({
-    message: 'Voice Chat Animations Library API',
-    version: '1.0.0',
+    message: 'Voice Chat Animations & Games Library API',
+    version: '1.1.0',
+    description: 'Complete animation and interactive games library for voice chat applications',
     endpoints: {
       animations: '/api/animations',
       gifts: '/api/gifts',
       effects: '/api/effects',
+      games: '/api/games',
       health: '/health'
-    }
+    },
+    features: [
+      'Animation Frames (PNG, WebP)',
+      'Animated Gifts (MP4, Lottie)',
+      'Entry Effects (SVG, PNG)',
+      'Interactive Games (Spin, Dice, Cards, etc)',
+      'Price & Currency System',
+      'Rarity Levels',
+      'Game Results Simulation'
+    ]
   });
 });
 
@@ -52,8 +65,9 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Voice Chat Animations Server running on http://localhost:${PORT}`);
-  console.log(`🔌 API endpoints available at http://localhost:${PORT}/api`);
+  console.log(`🚀 Voice Chat Animations & Games Server running on http://localhost:${PORT}`);
+  console.log(`📡 API endpoints available at http://localhost:${PORT}/api`);
+  console.log(`✨ Features: Animations | Gifts | Effects | Games`);
 });
 
 export default app;
